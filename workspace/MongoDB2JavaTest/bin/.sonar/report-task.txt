@@ -1,0 +1,5 @@
+projectKey=MongoDB2JavaTest
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/MongoDB2JavaTest
+ceTaskId=AWqamSS-TIK_0JF41fNv
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWqamSS-TIK_0JF41fNv

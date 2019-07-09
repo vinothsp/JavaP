@@ -1,0 +1,14 @@
+package org.sp;
+
+public class EmailRegEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		
+//		Email validation using regular expressions is common task which may be required in any
+//		application which seek email address as required information in registration step. 
+//		There may be more usecases but that’s not point of discussion here.
+
+	}
+
+}

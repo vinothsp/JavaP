@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Below is XSD for validating XML and finding schema loc-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        <bean id="sim" class = "org.sp.ioc.Jio"></bean>
+        
+        <bean id = "student" class = "com.sp.di.Student" >
+        <property name = "studentName" value = "Vinoth S"/>
+        <!-- If I use Property then Spring Checks for Setter methods inside the Class file  -->
+        </bean>
+
+
+		<bean id = "studentMoreDetails" class = "com.sp.di.StudentMoreDetails" >
+        <constructor-arg name = "studentName" value = "Vinoth S"/>
+        <constructor-arg name = "rollNumber" value = "1"/>
+        <!-- If we use Constructor we need to use constructor-arg for assigning values -->
+        </bean>
+        
+        
+</beans>
+

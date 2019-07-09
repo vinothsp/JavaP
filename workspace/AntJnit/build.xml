@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name = "AntJnit" default="run" basedir=".">
+
+	<target name = "cleanup">
+		<delete dir ="src1"/>
+		<delete dir ="bin"/>
+		<delete dir ="lib"/>
+		<delete dir ="reports"/>
+	
+	</target>
+	
+	
+	<target name = "createDir" depends="cleanup">
+		<mkdir dir ="src1"/>
+		<mkdir dir ="bin"/>
+		<mkdir dir ="lib"/>
+		<mkdir dir ="reports"/>
+	</target>
+	
+	<target name ="copy" depends="createDir">
+	
+		<copy overwrite = "true" todir="lib">
+		
+			<fileset dir = "F:\Acer\SW\jar files" includes ="*.jar" excludes="jersey-container-servlet-core-2.2.jar"></fileset>
+		
+		
+		</copy>
+		<copy overwrite = "true" todir="src1">
+		
+			<fileset dir = "F:\Acer\javap\workspace\AntJnit\src\" includes ="*.java" ></fileset>
+		
+		
+		</copy>
+	</target>
+	
+	<path id ="classpath" >
+	
+	<path location = "lib">
+	
+	<fileset dir ="lib" includes="*.jar"/>
+	</path>
+	<path location ="bin"></path>
+	</path>
+	
+	<target name = "compile" depends = "copy">
+	
+		<javac classpathref="classpath" includeantruntime = "true" srcdir = "src1" destdir ="bin" description = "Compiling Java Files "/>
+		
+		
+	</target>
+	
+	
+	<target name = "run" depends = "compile">
+	
+<!-- 		<java classpathref="classpath" classname = "Junit" description = "Running Java Files "/> -->
+
+
+
+	<!-- 	<junit haltonfailure ="false" printsummary = "true">
+			<classpath refid="classpath"/>
+			<test name ="Junit" todir="reports"/>
+			<formatter type="plain"/>
+		</junit> -->
+		
+		
+		<junit haltonfailure ="false" printsummary = "true">
+			<classpath refid="classpath"/>
+			<test name ="Junit" todir="reports"/>
+			<batchtest haltonfailure="false" fork= "true" todir ="reports">
+			<fileset dir ="bin"/>
+			<formatter type="plain"/>
+		</junit>
+		
+		
+		
+		
+		
+		
+		
+	</target>
+
+</project>

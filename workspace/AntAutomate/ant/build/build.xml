@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project name ="AntAutomate" default ="compile" basedir ="./bin">
+
+<target name = "echoSomething">
+
+	<echo>Started </echo>
+
+</target>
+
+
+<target name = "compile" depends = "echoSomething">
+
+<!-- Compile Files from the perticular directory and save the class file to destination directory -->
+
+<javac srcdir ="F:\Acer\javap\workspace\AntAutomate\src" destdir= "F:\Acer\javap\workspace\AntAutomate\ant\build\bin" ></javac>
+
+<java classname = "OruClass"  fork = "true"></java>
+
+<!-- Compile all the Files in the directory and s -->
+
+
+
+</target>
+
+<target name = "deleteFiles" depends="compile">
+
+	<delete failonerror = "false">
+	
+	
+<!-- 	Deletes all the java files in src directory -->
+		<fileset dir ="src" includes = "*.java"/>
+
+
+<!-- Deletes all the java files in the current dirctory and its Sub Directories -->
+	<fileset dir = "." includes="**/*.java"/>
+	
+	</delete>
+
+
+
+<!-- Delete The Single Directories -->
+	<delete dir = "src"/>
+	<delete dir = "bin"/>
+	<delete dir = "lib"/>
+	<echo>Deleted</echo>
+</target>
+
+
+<target name = "createFiles" depends="deleteFiles">
+
+<!-- Create Directory -->
+	<mkdir dir = "src"/>
+	<mkdir dir = "bin"/>
+	<mkdir dir = "lib"/>
+	<echo>created</echo>
+
+</target>
+
+<target name = "copyFile" depends="createFiles">
+
+
+	<!-- Copy The Single File to the Directory -->
+	<copy file = "F:\Acer\javap\workspace\MongoDB2JavaTest\src\org\sp\MongoTest.java" todir = "F:\Acer\javap\workspace\AntAutomate\ant\build\src"/>
+	<copy file = "F:\Acer\javap\workspace\MongoDB2JavaTest\bin\org\sp\MongoTest.class" todir = "F:\Acer\javap\workspace\AntAutomate\ant\build\bin"/>
+	
+	
+	<!-- Copy Mutliple Files To The Directory -->
+	
+	<copy todir = "F:\Acer\javap\workspace\AntAutomate\ant\build\src" overwrite = "true" >
+		<fileset dir="F:\Acer\javap\workspace\MongoDB2JavaTest\src\org\sp" includes = "*.java"/>
+	</copy>
+		
+<!--<copy todir = "F:\Acer\javap\workspace\AntAutomate\ant\build\bin"  override="true"><fileset dir="F:\Acer\javap\workspace\MongoDB2JavaTest\bin"/></copy> -->
+		
+	<echo>copied</echo>
+
+</target>
+
+<target name = "echoFinish" depends="copyFile">
+
+	<echo>FInished</echo>
+
+</target>
+
+</project>

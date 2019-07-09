@@ -1,0 +1,50 @@
+package org.sp;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+public class EmailRegEx {
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	/*	Email validation using regular expressions is common task which may be required in any
+		application which seek email address as required information in registration step. 
+		There may be more usecases but that’s not point of discussion here.*/
+		
+		 List<String> mail = new ArrayList();
+		mail.add("user@domain.com");
+		mail.add("user@domain.co.in");
+		mail.add("user1@domain.com");
+		mail.add("user.name@domain.com");
+		mail.add("user_name@domain.co.in");
+		mail.add("@bfdj");
+		mail.add("dfbgdf@bfdj..nj");
+		mail.add("ad#8@bfdj");
+		
+		mail.add("bshbf.fh@fsjd.com");
+		
+		//String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+		
+//		String regex = "^[A-Za-z0-9+._-]+@(.+)$";
+		
+		String regex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+"
+				+ "(?:\\.[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";
+		
+		Pattern pattern = Pattern.compile(regex);	
+		
+		for(String e : mail) 
+		{
+			Matcher m = pattern.matcher(e);
+			System.out.println(e + "  : "+ m.matches());
+			
+		}
+
+	}
+
+}
